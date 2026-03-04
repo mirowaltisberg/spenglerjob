@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 48" fill="none">
+  <!--
+    Roof/chevron mark (Spengler — sheet metal / roofing)
+    Bounding box: x=4 to x=27 (width=23), y=5 to y=38 (height=33)
+    Peak at top-center x=15.5, y=5
+  -->
+  <path
+    d="M4 38 L15.5 5 L27 38 L21 38 L15.5 15 L10 38 Z"
+    fill="#4B8DA8"/>
+
+  <!--
+    Wordmark: "Spenglerjob.ch"
+    Single <text> with <tspan> children for reliable multi-color rendering.
+    Font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+    "Spengler"  weight 800, dark   #1e293b
+    "job"       weight 800, blue   #4B8DA8
+    ".ch"       weight 400, gray   #94a3b8
+  -->
+  <text
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="22"
+    x="36"
+    y="36">
+    <tspan font-weight="800" fill="#1e293b">Spengler</tspan><tspan font-weight="800" fill="#4B8DA8">job</tspan><tspan font-weight="400" fill="#94a3b8">.ch</tspan>
+  </text>
+</svg>

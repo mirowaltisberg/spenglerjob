@@ -1,0 +1,33 @@
+# spenglerjob.ch
+
+> Die spezialisierte Jobbörse für Spengler-Fachkräfte in der Schweiz.
+
+spenglerjob.ch ist eine Nischen-Jobbörse für die Schweizer Spenglerbranche. Die Plattform richtet sich an Spengler EFZ, Bauspengler, Flachdachspengler, Dachdecker/Spengler, Fassadenspengler, Polybau-Spengler, Spengler-Vorarbeiter, Spengler-Monteure, Projektleiter Gebäudehülle, Bauleiter Gebäudehülle, Abdichter und Gebäudehüllenspezialisten.
+
+## Wichtige Seiten
+
+- [Startseite](https://spenglerjob.ch/): Jobsuche mit Filtern nach Beruf, Ort, Umkreis, Pensum
+- [Spengler EFZ Jobs Zürich](https://spenglerjob.ch/spenglerjobs/spengler-efz/zuerich): Beispiel-Landingpage
+- [Sitemap](https://spenglerjob.ch/sitemap.xml): Alle verfügbaren Seiten
+
+## Kerninformationen
+
+- **Sprache**: Deutsch (Schweizer Markt)
+- **Regionen**: Alle Schweizer Kantone — Zürich, Bern, Basel, Aargau, St. Gallen, Luzern, Solothurn, Zug und weitere
+- **Berufe**: Spengler EFZ, Bauspengler, Flachdachspengler, Dachdecker / Spengler, Fassadenspengler, Polybau-Spengler, Spengler-Vorarbeiter, Spengler-Monteur, Projektleiter Gebäudehülle, Bauleiter Gebäudehülle, Abdichter, Gebäudehüllenspezialist
+- **Lohndaten (Richtwerte, CHF/Jahr)**:
+  - Bauleiter Gebäudehülle: 90'000 – 115'000
+  - Projektleiter Gebäudehülle: 85'000 – 110'000
+  - Gebäudehüllenspezialist: 80'000 – 100'000
+  - Spengler-Vorarbeiter: 75'000 – 92'000
+  - Fassadenspengler: 68'000 – 85'000
+  - Polybau-Spengler: 68'000 – 85'000
+  - Flachdachspengler: 68'000 – 82'000
+  - Dachdecker / Spengler: 65'000 – 82'000
+  - Spengler EFZ: 65'000 – 80'000
+  - Bauspengler: 65'000 – 78'000
+
+## Kontakt
+
+- **Website**: https://spenglerjob.ch
+- **Branche**: Personalvermittlung / Jobbörse — Spenglerbranche Schweiz
