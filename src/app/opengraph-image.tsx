@@ -29,7 +29,7 @@ export default function OgImage() {
         >
           <path
             d="M4 40 L24 6 L44 40 L35 40 L24 16 L13 40 Z"
-            fill="#4B8DA8"
+            fill="#4A5568"
           />
         </svg>
 
@@ -44,7 +44,7 @@ export default function OgImage() {
           <span style={{ fontSize: 72, fontWeight: 900, color: "#f8fafc", letterSpacing: -1 }}>
             Spengler
           </span>
-          <span style={{ fontSize: 72, fontWeight: 900, color: "#4B8DA8", letterSpacing: -1 }}>
+          <span style={{ fontSize: 72, fontWeight: 900, color: "#4A5568", letterSpacing: -1 }}>
             job
           </span>
           <span style={{ fontSize: 52, fontWeight: 400, color: "#94a3b8", letterSpacing: -1 }}>
