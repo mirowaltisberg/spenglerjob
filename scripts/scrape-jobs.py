@@ -208,29 +208,57 @@ def clean_description(description: str) -> str:
 
 # Title must contain at least one of these (case-insensitive) to be kept
 RELEVANT_TITLE_KEYWORDS = [
-    # Core Spengler trades
-    "spengler", "bauspengler", "flachdach", "dachdecker",
-    "fassadenspengler", "polybau", "abdichter",
-    # Building envelope
-    "gebäudehülle", "gebaeudehulle", "gebaudeh",
-    "dach", "bedachung", "fassade",
-    # Materials
-    "blech", "kupfer", "zink", "titan-zink", "aluminium",
-    "metall", "blechverarbeitung",
-    # Components
-    "dachrinne", "kamineinfassung", "entwässerung",
-    "dachrand", "blitzschutz",
-    # Roles
-    "monteur", "montage",
-    "bauleiter", "polier", "vorarbeiter",
+    "spengler",
+    "bauspengler",
+    "flachdach",
+    "dachdecker",
+    "fassadenspengler",
+    "polybau",
+    "abdichter",
+    "gebäudehülle",
+    "gebaeudehulle",
+    "gebaudeh",
+    "dach",
+    "bedachung",
+    "fassade",
+    "fassadenmonteur",
+    "blech",
+    "kupfer",
+    "zink",
+    "titan-zink",
+    "aluminium",
+    "metall",
+    "blechverarbeitung",
+    "dachrinne",
+    "kamineinfassung",
+    "entwässerung",
+    "dachrand",
+    "blitzschutz",
+    "monteur",
+    "montage",
+    "bauleiter",
+    "polier",
+    "vorarbeiter",
     "projektleiter",
-    "techniker", "fachmann", "fachfrau", "fachperson",
-    "wartung", "instandhalt",
-    # Broader but still relevant
-    "isolier", "dämm",
+    "planer",
+    "techniker",
+    "fachmann",
+    "fachfrau",
+    "fachperson",
+    "wartung",
+    "instandhalt",
+    "isolier",
+    "dämm",
+    "isolation",
     "werkstatt",
     "anlagenbau",
-    "emr ", "emr-",
+    "gerüstbau",
+    "gerüstmonteur",
+    "zimmermann",
+    "holzbau",
+    "polybauer",
+    "handwerker",
+    "sanitär",
 ]
 
 # Titles containing any of these are always rejected
@@ -367,6 +395,23 @@ DEFAULT_SEARCH_TERMS = [
     "Dachsanierung",
     "Blechverarbeitung",
     "Bedachung",
+    "Isolierspengler",
+    "Blechnerei",
+    "Kupferschmied",
+    "Vorarbeiter Spengler",
+    "Bauleiter Spengler",
+    "Fassadenmonteur",
+    "Polybauer",
+    "Gerüstbauer",
+    "Zimmermann Dach",
+    "Flachdach Monteur",
+    "Steildach Monteur",
+    "Dachrinnen Monteur",
+    "Abdichter EFZ",
+    "Monteur Gebäudehülle",
+    "Wärmedämmung",
+    "Spengler Sanitär",
+    "Sanitärinstallateur",
 ]
 
 DEFAULT_LOCATIONS = [
@@ -382,6 +427,14 @@ DEFAULT_LOCATIONS = [
     "Lugano, Schweiz",
     "Chur, Schweiz",
     "Sion, Schweiz",
+    "Olten, Schweiz",
+    "Thun, Schweiz",
+    "Frauenfeld, Schweiz",
+    "Zug, Schweiz",
+    "Schaffhausen, Schweiz",
+    "Solothurn, Schweiz",
+    "Rapperswil, Schweiz",
+    "Baden, Schweiz",
 ]
 
 
@@ -681,7 +734,7 @@ def main():
     parser = argparse.ArgumentParser(description="Scrape Swiss electrical jobs")
     parser.add_argument("--query", type=str, help="Single search query")
     parser.add_argument("--location", type=str, help="Single location")
-    parser.add_argument("--results", type=int, default=100, help="Results per query/location combo")
+    parser.add_argument("--results", type=int, default=50, help="Results per query/location combo")
     parser.add_argument("--quick", action="store_true", help="Quick mode: single query only")
     parser.add_argument("--chunk", type=int, default=0, help="Chunk index (0-based) for splitting search terms")
     parser.add_argument("--total-chunks", type=int, default=1, help="Total number of chunks to split search terms into")
