@@ -4,9 +4,11 @@
     Bounding box: x=4 to x=27 (width=23), y=5 to y=38 (height=33)
     Peak at top-center x=15.5, y=5
   -->
-  <path
-    d="M4 38 L15.5 5 L27 38 L21 38 L15.5 15 L10 38 Z"
-    fill="#4A5568"/>
+  <g transform="translate(2, 6.8) scale(0.848)">
+    <path
+      d="M4 38 L15.5 5 L27 38 L21 38 L15.5 15 L10 38 Z"
+      fill="#4A5568"/>
+  </g>
 
   <!--
     Wordmark: "Spenglerjob.ch"
