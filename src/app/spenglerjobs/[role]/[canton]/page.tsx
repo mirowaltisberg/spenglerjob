@@ -54,12 +54,6 @@ function buildBreadcrumbSchema(config: LandingPageConfig) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Spenglerjobs",
-        item: `${SITE_URL}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
         name: config.title,
         item: `${SITE_URL}${getLandingPath(config)}`,
       },
@@ -130,12 +124,18 @@ export async function generateMetadata({ params }: LandingPageProps): Promise<Me
     description: config.description,
     alternates: {
       canonical: getLandingPath(config),
+      languages: {
+        "de-CH": getLandingPath(config),
+        "de": getLandingPath(config),
+      },
     },
     openGraph: {
       title: `${config.title} | spenglerjob.ch`,
       description: config.description,
       url: getLandingPath(config),
       type: "website",
+      siteName: "spenglerjob.ch",
+      locale: "de_CH",
     },
   };
 }
@@ -192,7 +192,6 @@ export default async function LandingRolePage({ params }: LandingPageProps) {
         <Breadcrumbs
           items={[
             { label: "Startseite", href: "/" },
-            { label: "Spenglerjobs", href: "/" },
             { label: config.title },
           ]}
           className="mb-4"
