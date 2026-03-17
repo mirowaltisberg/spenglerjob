@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getIndexableJobListings } from "@/lib/job-catalog";
 import { getLandingPath, TOP_LANDING_PAGES } from "@/lib/landing-pages";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://spenglerjob.ch";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.spenglerjob.ch";
 
 function toAbsolute(path: string): string {
   return `${SITE_URL}${path}`;

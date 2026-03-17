@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://spenglerjob.ch";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.spenglerjob.ch";
 
 const homepageBreadcrumbSchema = {
   "@context": "https://schema.org",
