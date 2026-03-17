@@ -40,9 +40,9 @@ function getDisplayJobId(job: JobListing): string {
   }
   if (job.source === "scraped") {
     const hash = job.id.replace(/^scraped-/, "");
-    return `ELK-${hash.slice(0, 8).toUpperCase()}`;
+    return `SPG-${hash.slice(0, 8).toUpperCase()}`;
   }
-  return `ELK-${job.id.padStart(4, "0")}`;
+  return `SPG-${job.id.padStart(4, "0")}`;
 }
 
 export const revalidate = 3600;
