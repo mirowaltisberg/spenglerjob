@@ -42,8 +42,7 @@ export function buildJobPostingSchema(job: JobListing) {
     industry: "Spenglerei & Gebäudehülle",
     hiringOrganization: {
       "@type": "Organization",
-      name: job.company?.trim() || "Arbeitgeber auf spenglerjob.ch",
-      ...(job.companyUrl ? { sameAs: job.companyUrl } : {}),
+      name: "Arbeitgeber via spenglerjob.ch",
     },
     jobLocation: {
       "@type": "Place",
