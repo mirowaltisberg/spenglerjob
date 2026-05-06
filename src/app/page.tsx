@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { buildJobPostingSchema } from "@/lib/job-schema";
 
 export const metadata: Metadata = {
-  title: "Spengler Jobs Schweiz 2026 | Offene Stellen finden",
+  title: "287 Spengler Jobs Schweiz 2026 | Offene Stellen finden",
   description:
     "Finde aktuelle Spengler Jobs in der Schweiz. Stellen für Spengler EFZ, Bauspengler, Dachdecker, Fassadenspengler & mehr. Jetzt Lebenslauf einreichen.",
   alternates: { canonical: "/" },
