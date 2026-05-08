@@ -19,11 +19,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.spenglerjob.ch
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "621 Spengler Jobs Schweiz 2026 | Offene Stellen finden",
+    default: "Spengler Jobs Schweiz 2026 | Stellen, Lohn & Ausbildung",
     template: "%s | spenglerjob.ch",
   },
   description:
-    "Finde aktuelle Spengler Jobs in der Schweiz. Stellen für Spengler EFZ, Bauspengler, Dachdecker, Fassadenspengler & mehr. Jetzt Lebenslauf einreichen.",
+    "Spengler Jobs Schweiz: Polybauer Spenglerei, Bauspengler, Sanitärspengler, Bedachungs-Spengler. Lohn, Ausbildung, GAV Polybau — tägliche Updates.",
   keywords: [
     "Spenglerjobs",
     "Spenglerjobs Schweiz",
