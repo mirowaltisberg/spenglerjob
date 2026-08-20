@@ -1,0 +1,79 @@
+{
+  "jobs": [
+    {
+      "trade": "spengler",
+      "id": "scraped-spengler-56d2b5f33084",
+      "jobUrl": "https://jobs.example.ch/spengler-1",
+      "source": "indeed",
+      "title": "Spengler EFZ",
+      "company": "Blechdach Beispiel AG",
+      "location": "Zürich, Zürich",
+      "type": "Vollzeit",
+      "workload": "100%",
+      "datePosted": "$TODAY",
+      "description": "Fertigung und Montage von Blechanschlüssen an Dach und Fassade.",
+      "expectedDisposition": "ACCEPT",
+      "expectedPublicTitle": "Spengler/in EFZ"
+    },
+    {
+      "trade": "spengler",
+      "id": "scraped-spengler-066f179bfc72",
+      "jobUrl": "https://jobs.example.ch/spengler-2",
+      "source": "linkedin",
+      "title": "Projektleiter Spenglerei 80–100%",
+      "company": "Spenglerei Muster GmbH",
+      "location": "Bern, Bern",
+      "type": "Festanstellung",
+      "workload": "80-100%",
+      "datePosted": "$TODAY",
+      "description": "Koordination von Spenglerprojekten, Terminen und Fachpartnern vom Start bis zur Übergabe.",
+      "expectedDisposition": "ACCEPT",
+      "expectedPublicTitle": "Projektleiter/in Spenglerei"
+    },
+    {
+      "trade": "spengler",
+      "id": "scraped-spengler-c1fa24de65cf",
+      "jobUrl": "https://jobs.example.ch/spengler-3",
+      "source": "google",
+      "title": "Bauspengler EFZ",
+      "company": "Blechwerk Beispiel AG",
+      "location": "Basel, Basel-Stadt",
+      "type": "Vollzeit",
+      "workload": "100%",
+      "datePosted": "$TODAY",
+      "description": "Montage von Dachrinnen, Einfassungen und Blechabdeckungen.",
+      "expectedDisposition": "ACCEPT",
+      "expectedPublicTitle": "Bauspengler/in EFZ"
+    },
+    {
+      "trade": "spengler",
+      "id": "scraped-spengler-89d76b684751",
+      "jobUrl": "https://jobs.example.ch/spengler-4",
+      "source": "indeed",
+      "title": "Servicemonteur Spenglerei",
+      "company": "Gebäudehülle Muster AG",
+      "location": "Luzern, Luzern",
+      "type": "Vollzeit",
+      "workload": "80-100%",
+      "datePosted": "$TODAY",
+      "description": "Unterhalt und Reparatur von Dachentwässerungen und Blechanschlüssen.",
+      "expectedDisposition": "ACCEPT",
+      "expectedPublicTitle": "Servicemonteur/in Spenglerei"
+    },
+    {
+      "trade": "spengler",
+      "id": "scraped-spengler-e8bb66f62863",
+      "jobUrl": "https://jobs.example.ch/spengler-efz-token",
+      "source": "indeed",
+      "title": "Spenglerpraktiker EFZPlus",
+      "company": "Token Test AG",
+      "location": "Zug, Zug",
+      "type": "Vollzeit",
+      "workload": "100%",
+      "datePosted": "$TODAY",
+      "description": "Blechbearbeitung und Montagearbeiten im Einsatzgebiet Zug.",
+      "expectedDisposition": "ACCEPT",
+      "expectedPublicTitle": "Spenglerpraktiker/in EBA"
+    }
+  ]
+}

@@ -2,46 +2,31 @@ import Link from "next/link";
 import { TOP_LANDING_PAGES, getLandingPath } from "@/lib/landing-pages";
 import { JsonLd } from "@/components/json-ld";
 
-// SEO-DECISION: Server-rendered content for homepage crawlability.
-// This content is always visible to search engines even though the
-// main job search is client-rendered.
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://spenglerjob.ch";
-
-// FAQ answers target the AI-citation optimum band of 134-167 words per answer.
-// Shorter answers get truncated by LLMs into low-context excerpts; longer ones
-// get summarized away. The 134-167 range survives both ends intact.
 const HOMEPAGE_FAQS = [
   {
-    question: "Welche Spenglerjobs gibt es auf spenglerjob.ch?",
+    question: "Welche Stellen finde ich auf spenglerjob.ch?",
     answer:
-      "Auf spenglerjob.ch findest du alle relevanten Stellenprofile der Schweizer Spenglerei und Gebäudehülle. Dazu gehören die EFZ-Lehrabschluss-Berufe Spengler EFZ, Bauspengler, Werkstattspengler und Spengler-Monteur, daneben spezialisierte Profile wie Flachdachspengler, Fassadenspengler, Dachspengler, Polybau-Spengler und Abdichter für Flachdach- und erdberührte Bauteile. Auf der Planungs- und Projektebene listen wir Projektleiter Gebäudehülle, Bauleiter Gebäudehülle und Gebäudehüllenspezialisten mit Beratungskompetenz für energetische Sanierungen. Auf der Führungsebene findest du Spengler-Vorarbeiter, Polier Gebäudehülle und eidg. dipl. Spenglermeister sowie Geschäftsführende von Spenglerbetrieben. Lehrstellen, Trainee-Programme und Wiedereinsteigerangebote sind separat ausgewiesen, damit Berufsanfängerinnen, Quereinsteiger und Wiedereinsteigende die für sie passenden Inserate schnell finden. Über die Kartenansicht lokalisierst du Stellen zusätzlich nach Postleitzahl und Pendelradius — besonders nützlich in ländlichen Regionen mit wechselnder Baustellenlogik. Die Stellen werden täglich aktualisiert und aus öffentlichen Inseraten gefiltert. Sie verteilen sich auf alle 26 Schweizer Kantone, mit besonderer Dichte in Zürich, Bern, Aargau, Basel-Stadt und der Ostschweiz.",
+      "Die Suche bündelt öffentlich zugängliche Inserate für Spenglerinnen und Spengler sowie klar bezeichnete Funktionen in Bauspenglerei, Flachdach, Gebäudehülle, AVOR, Service und Projektleitung Spenglerei. Welche Treffer aktuell vorhanden sind, zeigt allein die Ergebnisliste; spenglerjob.ch verspricht weder eine vollständige Marktabdeckung noch eine feste Inseratezahl.",
   },
   {
-    question: "Was verdient ein Spengler EFZ in der Schweiz?",
+    question: "Wie suche ich nach einem Spenglerjob?",
     answer:
-      "Ein Spengler EFZ verdient in der Schweiz im Durchschnitt CHF 65'000 bis 80'000 pro Jahr. Das Gehalt variiert deutlich nach Kanton, Berufserfahrung, Arbeitgebergrösse und Spezialisierung. Im Kanton Zürich, in Zug und in Basel-Stadt liegen die Löhne tendenziell 5 bis 10 Prozent über dem Schweizer Mittel; in ländlicheren Kantonen wie Freiburg, Jura oder Graubünden 5 bis 8 Prozent darunter. Berufsanfänger nach EFZ-Abschluss starten meist im Bereich CHF 60'000 bis 68'000, mit drei bis fünf Jahren Erfahrung verschiebt sich der Marktwert in den Bereich CHF 72'000 bis 82'000. Spezialisierungen auf Metallfassaden, Photovoltaik-Integration in die Gebäudehülle oder historische Dächer bringen zusätzliche 5 bis 10 Prozent. Vorarbeiter, Polier Gebäudehülle und Spenglermeister heben das Salärband weiter. Im Vergleich zum Nachbarland Deutschland liegen die Schweizer Bruttolöhne durchschnittlich 60 bis 80 Prozent höher; allerdings sind Lebenshaltungskosten und Krankenkassenprämien ebenfalls deutlich höher. Der 13. Monatslohn ist in der Spenglerbranche Standard. Die vollständige Lohnübersicht für alle Spenglerberufe findest du auf dieser Startseite.",
+      "Gib eine Berufsbezeichnung oder ein Spengler-Stichwort und bei Bedarf einen Ort ein. Die Ergebnisliste lässt sich mit den angebotenen Filtern weiter eingrenzen. Massgebend für Aufgaben, Qualifikation, Pensum, Arbeitsort und Lohn sind die Angaben im jeweiligen Inserat. Fehlt eine Angabe, ergänzt spenglerjob.ch dafür keine pauschale Schätzung.",
   },
   {
-    question: "Wie finde ich einen Job als Spengler in der Schweiz?",
+    question: "Was bedeutet Direktanstellung in der Ergebnisliste?",
     answer:
-      "Auf spenglerjob.ch suchst du gezielt mit drei Filtern nach passenden Stellen: Beruf (Spengler EFZ, Bauspengler, Werkstattspengler, Flachdachspengler, Fassadenspengler, Dachspengler, Polybau-Spengler, Spengler-Vorarbeiter und weitere Spezialistenprofile), Standort (alle 26 Schweizer Kantone plus Ortssuche mit Umkreis-Radius in Kilometern) und Pensum (Vollzeit, 80–100%, 60–80%, Teilzeit). Du kannst zusätzlich nach Anstellungsart (Festanstellung, Temporär, Praktikum, Lehre) filtern und Stellen mit konkretem Lohnband gezielt aufrufen. Der Bewerbungsprozess läuft direkt über die Plattform: Lebenslauf als PDF hochladen, Anschreiben in das Formular tippen oder ebenfalls als PDF beifügen, Sprache und Verfügbarkeit angeben, abschicken. Wir leiten dein Dossier anonymisiert an den Arbeitgeber weiter. Du kannst Suchprofile speichern und erhältst dann eine Benachrichtigung, sobald neue passende Stellen aufgeschaltet werden. Für regional konzentrierte Suchen empfehlen wir die Karte mit Umkreis-Filter — so findest du Stellen innerhalb deines bevorzugten Pendelradius. Berufsmessen wie Bauen+Wohnen oder regionale Berufsbildungsmessen bieten zusätzliche Direktkontakte zu Arbeitgebern; viele Spenglerbetriebe haben offene Stellen, die noch nicht öffentlich ausgeschrieben sind.",
+      "Ein als Direktanstellung gekennzeichnetes Profil ist kein aktuelles Stelleninserat und nennt deshalb weder Arbeitgeber noch Lohn oder Bewerbungslink. Es zeigt ein kontrolliertes Spengler-Berufsprofil, für das unser Team fortlaufend einen passenden Betrieb sucht. Kommt ein Kontakt zustande, erfolgt die Anstellung direkt beim jeweiligen Arbeitgeber; eine Vermittlung oder Anstellung durch spenglerjob.ch wird damit nicht versprochen.",
   },
   {
-    question: "Welche Kantone haben die meisten Spenglerjobs?",
+    question: "Wie lange dauert die Lehre als Spengler EFZ?",
     answer:
-      "Die mit Abstand meisten offenen Stellen für Spengler-Fachkräfte gibt es in den Kantonen Zürich, Bern, Aargau, Waadt und Basel-Stadt. Diese fünf Kantone vereinen rund 60 Prozent aller publizierten Spengler-Stellenausschreibungen in der Schweiz. Im Mittelfeld folgen St. Gallen, Luzern, Genf, Thurgau und Solothurn. Ländlichere Kantone wie Uri, Glarus, Appenzell Innerrhoden oder Jura haben deutlich weniger offene Stellen, dafür weniger Konkurrenz unter Bewerbern. Die regionale Verteilung folgt Bautätigkeit und Sanierungswelle: Wo Wohnungsbau, Gewerbe- und Industrieprojekte zunehmen, steigt auch die Nachfrage nach Bau- und Werkstattspenglern, Dachspenglern und Fassadenspenglern. Für Pendlerregionen lohnt sich ein Blick auf die Nachbarkantone — Aargauer Spenglerbetriebe rekrutieren häufig in Solothurn und Luzern, Basler in Baselland und Solothurn, Zürcher in Schaffhausen, Thurgau und Schwyz. Eine zweisprachige Bewerbung (Deutsch und Französisch) öffnet zusätzlich den Markt im Kanton Wallis, in der Region Biel/Bienne und in Teilen von Fribourg.",
+      "Das offizielle Berufsprofil von berufsberatung.ch nennt für Spengler/in EFZ vier Jahre und den Abschluss mit eidgenössischem Fähigkeitszeugnis. Suissetec beschreibt Blech-, Abdichtungs- und Montagearbeiten an Dächern und Fassaden und publiziert die Ausbildungsgrundlagen.",
   },
   {
-    question:
-      "Was ist der Unterschied zwischen Bauspengler und Werkstattspengler?",
+    question: "Wie kann ich einen Lohn für eine Spenglerstelle vergleichen?",
     answer:
-      "Der Unterschied liegt im Arbeitsort und im Schwerpunkt der Tätigkeit. Der Bauspengler arbeitet vorwiegend draussen am Objekt: Dachrinnen, Fallrohre, Kaminköpfe, Dachrandabschlüsse, Anschlussbleche und Fassadenverkleidungen direkt an der Gebäudehülle. Höhentauglichkeit, Schwindelfreiheit und Wetterbeständigkeit sind hier zentrale Voraussetzungen. Der Werkstattspengler dagegen arbeitet vorwiegend in der Werkstatt: Zuschnitte und Falzarbeiten an der Abkantbank, Schweissen und Hartlöten von Lüftungskanälen, Apparatebau, Sonderanfertigungen für Industriespenglerei und HLK-Bauten. Beide Profile gehören zum Spengler EFZ und werden in der 4-jährigen Lehre unterrichtet — viele Betriebe rekrutieren bewusst gemischte Equipen, weil Bau- und Werkstattaufträge sich oft ergänzen. Der Lohnabstand ist gering und liegt meist unter CHF 5'000 pro Jahr. Wechsel zwischen den beiden Bereichen ist im Verlauf der Berufslaufbahn üblich. Welcher Schwerpunkt besser passt, hängt von Lust auf Aussenarbeit versus präziser Werkstattarbeit ab — eine Berufsberatung in deinem Wohnkanton hilft bei der konkreten Wahl.",
-  },
-  {
-    question: "Gibt es auf spenglerjob.ch auch Teilzeitstellen?",
-    answer:
-      "Ja, ein wachsender Teil der Stellen auf spenglerjob.ch ist Teilzeitarbeit oder mit reduziertem Pensum verfügbar. Im Filter wählst du zwischen Vollzeit (90–100%), 80–100%, 60–80% oder Teilzeit unter 60%. Teilzeitmodelle sind in der Spenglerbranche besonders bei Werkstattspenglerei, Apparatebau und in der Projektleitung Gebäudehülle verbreitet — Elternzeit-Modelle, schrittweiser Wiedereinstieg nach Pause und Vorruhestand mit Reduzierung auf 60 oder 80 Prozent sind zunehmend Standard. Auf der Baustellenseite (Bauspengler, Flachdachspengler, Fassadenspengler) bleibt Vollzeit dominant, weil Equipen meist vollständig disponiert werden. In den Bereichen Werkstatt, Planung und Projektleitung ist Teilzeit hingegen gut etabliert. Job-Sharing-Modelle (zwei Personen teilen sich eine Stelle) werden ebenfalls vereinzelt angeboten. Wer Elternzeit-Wiedereinstieg sucht, profitiert von einer wachsenden Akzeptanz für gestaffelte Pensumserhöhungen — also Start mit 60 Prozent und schrittweise Anhebung über 12 bis 24 Monate. Wir kennzeichnen jedes Inserat klar mit dem akzeptierten Pensumband, damit du auf einen Blick siehst, welche Stelle zu deiner gewünschten Arbeitszeit passt.",
+      "Eine einzelne pauschale Zahl bildet Beruf, Region, Erfahrung, Funktion und Betrieb nicht zuverlässig ab. Für eine statistische Orientierung eignet sich Salarium des Bundesamts für Statistik. Ob ein Mindestlohn aus einem Gesamtarbeitsvertrag gilt, muss anhand des konkreten Betriebs, der Tätigkeit und des Arbeitsorts geprüft werden. Die Lohnseite verlinkt die offiziellen Werkzeuge und die aktuelle GAV-Übersicht des SECO.",
   },
 ];
 
@@ -58,161 +43,118 @@ const faqPageSchema = {
   })),
 };
 
-const SALARY_TABLE = [
-  { role: "Bauleiter Gebäudehülle", range: "CHF 90'000 – 115'000" },
-  { role: "Projektleiter Gebäudehülle", range: "CHF 85'000 – 110'000" },
-  { role: "Gebäudehüllenspezialist", range: "CHF 80'000 – 100'000" },
-  { role: "Spengler-Vorarbeiter", range: "CHF 75'000 – 92'000" },
-  { role: "Fassadenspengler", range: "CHF 68'000 – 85'000" },
-  { role: "Polybau-Spengler", range: "CHF 68'000 – 85'000" },
-  { role: "Flachdachspengler", range: "CHF 68'000 – 82'000" },
-  { role: "Dachdecker / Spengler", range: "CHF 65'000 – 82'000" },
-  { role: "Spengler EFZ", range: "CHF 65'000 – 80'000" },
-  { role: "Abdichter", range: "CHF 65'000 – 80'000" },
-  { role: "Bauspengler", range: "CHF 65'000 – 78'000" },
-  { role: "Spengler-Monteur", range: "CHF 62'000 – 76'000" },
-];
-
-/**
- * Server-rendered SEO content for the homepage.
- * Crawlable by search engines even when JS is disabled.
- * Includes: intro text, FAQ section, salary table, landing page links.
- */
 export function HomepageSeoContent() {
   return (
-    <section className="bg-white border-t" aria-label="Informationen für Spengler-Fachkräfte">
+    <section className="editorial-surface" aria-label="Informationen für Spengler-Fachkräfte">
       <JsonLd data={faqPageSchema} />
 
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 max-w-5xl">
-        {/* SEO intro paragraph — AI-citeable, entity-rich */}
-        <div className="mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
-            Spenglerjobs in der Schweiz finden
+      <div className="container mx-auto px-4 sm:px-6 py-14 sm:py-20 max-w-6xl">
+        <div className="editorial-grid mb-16">
+        <div className="self-start">
+          <p className="eyebrow">Fachlich fokussiert</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-5">
+            Spenglerjobs in der Schweiz suchen
           </h2>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-4">
-            Auf spenglerjob.ch finden Spengler-Fachkräfte aktuelle offene Stellen in der ganzen Schweiz
-            — von Spengler EFZ über Bauspengler und Flachdachspengler bis hin zu
-            Fassadenspengler, Abdichter und Projektleiter Gebäudehülle. Ob du deinen nächsten Spenglerjob
-            in Zürich, Bern oder Basel suchst — unsere spezialisierte Jobbörse
-            richtet sich an alle Berufsleute der Spenglerbranche.
+            spenglerjob.ch bündelt Stelleninserate mit klarem Bezug zum
+            Spenglergewerk. Suche nach Beruf und Ort und prüfe auf der Detailseite
+            die im Inserat veröffentlichten Aufgaben und Anforderungen.
           </p>
           <p className="text-slate-600 text-base leading-relaxed">
-            Ob du in Zürich, Bern, Basel, Luzern, St. Gallen oder einem anderen Schweizer Kanton
-            suchst — mit unserer smarten Filterung nach Beruf, Ort, Umkreis und Pensum findest du
-            schnell die passende Stelle. Bewirb dich direkt über die Plattform mit wenigen Klicks.
+            Fehlende Lohn- oder Arbeitgeberangaben werden nicht durch eigene
+            Schätzungen oder Offenlegungsversprechen ersetzt.
           </p>
         </div>
 
-        {/* Salary table — highly citeable by AI. id="loehne" anchor lets editorial */}
-        {/* sections on category pages deep-link via /#loehne. */}
-        <div id="loehne" className="mb-12 scroll-mt-24">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-            Lohnübersicht Spenglerberufe Schweiz
+        <div className="source-panel p-6 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+            Offizielle Quellen
           </h2>
-          <p className="text-slate-500 text-sm mb-4">
-            Durchschnittliche Jahresgehälter für Spengler-Fachkräfte in der Schweiz (2025/2026, Richtwerte).
-            Quellen:{" "}
-            <a href="https://www.gh-schweiz.ch" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">Gebäudehülle Schweiz</a>,{" "}
-            <a href="https://www.suissetec.ch" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">suissetec</a>,{" "}
-            <a href="https://www.bfs.admin.ch" target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-700">BFS</a>.
+          <p className="text-sm text-slate-600 leading-relaxed mb-3">
+            Quellen zuletzt geprüft am 20. August 2026. Wir übernehmen keine
+            pauschalen Erwachsenen-Lohnbänder aus allgemeinen Branchenseiten.
           </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b-2 border-slate-200">
-                  <th className="py-3 pr-4 text-sm font-semibold text-slate-900">Beruf</th>
-                  <th className="py-3 text-sm font-semibold text-slate-900">Jahreslohn (CHF)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {SALARY_TABLE.map((row) => (
-                  <tr key={row.role} className="border-b border-slate-100">
-                    <td className="py-2.5 pr-4 text-sm text-slate-700">{row.role}</td>
-                    <td className="py-2.5 text-sm font-medium text-slate-900">{row.range}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <details className="mt-4 group rounded-lg border border-slate-200 bg-slate-50 overflow-hidden">
-            <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition-colors">
-              Methodologie — wie wir die Lohnbänder berechnen
-              <span
-                className="ml-2 shrink-0 text-slate-400 transition-transform group-open:rotate-180"
-                aria-hidden="true"
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a
+                href="https://www.berufsberatung.ch/de/berufe/spengler-in-efz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
               >
-                ▾
-              </span>
-            </summary>
-            <div className="px-4 pb-4 text-sm text-slate-600 leading-relaxed space-y-2">
-              <p>
-                <strong>Stand:</strong> 2. Mai 2026.
-              </p>
-              <p>
-                <strong>Quellen:</strong> Wir aggregieren öffentlich publizierte
-                Lohndaten der Schweizer Spenglerei- und Gebäudehülle-Branche aus
-                den Jahres- und Branchenstatistiken von{" "}
-                <a
-                  href="https://www.gh-schweiz.ch"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-slate-800"
-                >
-                  Gebäudehülle Schweiz
-                </a>{" "}
-                (Verband der Schweizer Gebäudehüllen-Branche),{" "}
-                <a
-                  href="https://www.suissetec.ch"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-slate-800"
-                >
-                  suissetec
-                </a>{" "}
-                (Schweizerisch-Liechtensteinischer Gebäudetechnikverband) und dem{" "}
-                <a
-                  href="https://www.bfs.admin.ch"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-slate-800"
-                >
-                  Bundesamt für Statistik (BFS)
-                </a>
-                . Ergänzend werten wir die täglich auf spenglerjob.ch indexierten
-                öffentlichen Stellenausschreibungen aus.
-              </p>
-              <p>
-                <strong>Bandbreite und Mittelwert:</strong> Die Tabelle zeigt
-                Richtbänder. Der konkrete Lohn wird im Bewerbungsprozess
-                individuell verhandelt und hängt von Erfahrung, Spezialisierung,
-                Arbeitgebergrösse, Branche und Region ab. Innerhalb eines Bands
-                liegt die Mehrheit (rund zwei Drittel) der ausgewerteten
-                Vergleichswerte.
-              </p>
-              <p>
-                <strong>Aktualisierung:</strong> Wir überarbeiten die Lohnbänder
-                jährlich beziehungsweise sofort, sobald ein Branchenverband neue
-                Empfehlungen veröffentlicht oder sich die Marktlage in einer
-                Region merklich verändert. Korrekturhinweise nehmen wir gerne
-                über die Kontaktseite entgegen.
-              </p>
-            </div>
-          </details>
+                berufsberatung.ch: Spengler EFZ
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://suissetec.ch/de/spengler-in-efz.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                suissetec: Spengler/in EFZ
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.salarium.bfs.admin.ch/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                BFS Salarium: statistischer Lohnrechner
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.seco.admin.ch/de/gesamtarbeitsvertraege-bund"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                SECO: allgemeinverbindlich erklärte Gesamtarbeitsverträge
+              </a>
+            </li>
+          </ul>
+          <Link
+            href="/lohn-spengler-schweiz"
+            className="editorial-link mt-5 inline-block text-sm font-bold text-primary underline"
+          >
+            Lohnangaben und GAV richtig einordnen
+          </Link>
+        </div>
         </div>
 
-        {/* FAQ section — conversational query targets */}
-        <div className="mb-12">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+        <div className="mb-14 border-y border-border py-10">
+          <p className="eyebrow">Direktanstellung · transparenter Ablauf</p>
+          <h2 className="mb-5 text-2xl font-black text-foreground sm:text-3xl">Vom Berufsprofil zum passenden Spenglerbetrieb</h2>
+          <ol className="grid gap-3 md:grid-cols-3">
+            {[
+              ["1", "Profil einordnen", "Rolle, Region und kontrollierte Filterpräferenzen bestimmen das angezeigte Berufsprofil."],
+              ["2", "Betrieb suchen", "Unser Team sucht fortlaufend nach einem Arbeitgeber, der zu diesem Profil passen kann."],
+              ["3", "Direkt anstellen", "Ein möglicher Austausch führt nicht automatisch zu einer Stelle; eine Anstellung erfolgt direkt beim Arbeitgeber."],
+            ].map(([step, title, copy]) => (
+              <li key={step} className="source-panel min-w-0 p-5">
+                <span className="font-mono text-xs font-bold text-primary">SCHRITT {step}</span>
+                <h3 className="mt-2 font-bold text-foreground">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 [overflow-wrap:anywhere]">{copy}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="mb-14">
+          <p className="eyebrow">Direkte Antworten</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-5">
             Häufig gestellte Fragen
           </h2>
           <div className="space-y-4">
-            {HOMEPAGE_FAQS.map((faq, index) => (
+            {HOMEPAGE_FAQS.map((faq) => (
               <details
-                key={index}
-                className="group rounded-lg border border-slate-200 bg-slate-50 overflow-hidden"
+                key={faq.question}
+                className="faq-item group overflow-hidden"
               >
-                <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition-colors">
+                <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-foreground hover:bg-accent/35 transition-colors">
                   {faq.question}
                   <span
                     className="ml-2 shrink-0 text-slate-400 transition-transform group-open:rotate-180"
@@ -229,20 +171,24 @@ export function HomepageSeoContent() {
           </div>
         </div>
 
-        {/* Landing page links — crawlable internal links */}
-        <div className="mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
-            Alle Spengler Jobs nach Beruf und Kanton
+        <div className="mb-8 border-t border-border pt-10">
+          <p className="eyebrow">Nach Gewerk und Region</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-3">
+            Spenglerstellen nach Beruf und Kanton
           </h2>
-          <nav aria-label="Beliebte Stellenangebote nach Beruf und Kanton">
+          <p className="text-sm text-slate-600 mb-4">
+            Diese Suchseiten dienen der Navigation und sind bis zum Nachweis
+            eigener Qualitäts- und Bestandsdaten nicht für Suchmaschinen indexiert.
+          </p>
+          <nav aria-label="Stellenangebote nach Beruf und Kanton">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-              {TOP_LANDING_PAGES.map((item) => (
+              {TOP_LANDING_PAGES.slice(0, 18).map((item) => (
                 <Link
                   key={`${item.role}-${item.canton}`}
                   href={getLandingPath(item)}
-                  className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 hover:border-primary/40 hover:text-primary transition-colors"
+                  className="link-tile flex items-center px-3 py-2 pr-9 text-sm text-foreground hover:border-primary/50 hover:text-primary transition-colors"
                 >
-                  {item.role} in {item.canton}
+                  {item.title}
                 </Link>
               ))}
             </div>

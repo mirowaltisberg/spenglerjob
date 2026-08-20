@@ -1,8 +1,5 @@
 import { ImageResponse } from "next/og";
 
-// SEO-DECISION: Apple Touch Icon generated from code to match the brand roof mark.
-// This satisfies the Seobility "missing apple-touch-icon" warning.
-
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
@@ -16,7 +13,7 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#4A5568",
+          background: "#12243d",
           borderRadius: "36px",
         }}
       >
@@ -26,10 +23,8 @@ export default function AppleIcon() {
           width="120"
           height="120"
         >
-          <path
-            d="M4 40 L24 6 L44 40 L35 40 L24 16 L13 40 Z"
-            fill="white"
-          />
+          <path d="M6 8h22l8 8v18H14l-8-8z" fill="#e9eff3" stroke="#f07832" strokeWidth="3" />
+          <path d="M28 8v8h8M6 26h8v8M13 15h11l5 5v8H18l-5-5z" fill="none" stroke="#315b7a" strokeWidth="2" />
         </svg>
       </div>
     ),

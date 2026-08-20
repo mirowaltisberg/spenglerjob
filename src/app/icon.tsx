@@ -13,8 +13,8 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#4A5568",
-          borderRadius: "10px",
+          background: "#12243d",
+          borderRadius: "6px",
         }}
       >
         <svg
@@ -23,10 +23,8 @@ export default function Icon() {
           width="33"
           height="33"
         >
-          <path
-            d="M4 40 L24 6 L44 40 L35 40 L24 16 L13 40 Z"
-            fill="white"
-          />
+          <path d="M6 8h22l8 8v18H14l-8-8z" fill="#e9eff3" stroke="#f07832" strokeWidth="3" />
+          <path d="M28 8v8h8M6 26h8v8M13 15h11l5 5v8H18l-5-5z" fill="none" stroke="#315b7a" strokeWidth="2" />
         </svg>
       </div>
     ),

@@ -1,0 +1,86 @@
+{
+  "trade": "spengler",
+  "idPattern": "^scraped-spengler-[0-9a-f]{12}$",
+  "allowedSources": ["google", "indeed", "linkedin"],
+  "tradeContextPatterns": [
+    "spengler", "spenglerei", "bauspengler", "blechhülle", "blechhuelle",
+    "gebäudehülle", "gebaeudehuelle", "dachentwässer", "dachentwaesser"
+  ],
+  "hardNegativeTitlePatterns": [
+    "carrosserie", "autospen", "pflege", "spitex", "gesundheit", "sozial", "verkauf",
+    "sales", "marketing", "jurist", "anwalt", "fahrer", "chauffeur", "logistik",
+    "reinigung", "koch", "küche", "kueche", "arzt", "medizin", "software", "developer",
+    "data scientist", "human resources", "product manager", "product owner", "frontend",
+    "backend", "devops", "buchhalt", "accounting", "controller", "internship", "ingénieur",
+    "technicien", "électricien", "elettricista", "disegnatore"
+  ],
+  "otherTradeTitlePatterns": [
+    "elektro", "elektriker", "sanitär", "sanitaer", "heizung", "heizungsinstallateur",
+    "lüftung", "lueftung", "kälte", "kaelte", "klima", "dachdecker", "zimmermann",
+    "zimmerin", "holzbau", "schreiner", "tischler", "bodenleger", "plattenleger",
+    "gärtner", "gaertner", "metallbauer", "maurer", "maler", "hlks", "hvac"
+  ],
+  "highSpecificityTitles": [
+    { "pattern": "bauspengler|flachdachspengler|fassadenspengler", "publicTitle": "Bauspengler/in", "profile": "envelope" },
+    { "pattern": "spenglerpraktiker", "publicTitle": "Spenglerpraktiker/in EBA", "profile": "envelope" },
+    { "pattern": "spenglerpolier|spenglermeister", "publicTitle": "Spenglerpolier/in", "profile": "leadership" },
+    { "pattern": "^spengler(?:in|/in)?(?:\\s|$)", "publicTitle": "Spengler/in", "profile": "envelope" }
+  ],
+  "broadTitlesRequiringTradeContext": [
+    { "pattern": "projektleit", "publicTitle": "Projektleiter/in Spenglerei", "profile": "leadership" },
+    { "pattern": "bauleit|teamleit|chefmonteur", "publicTitle": "Bauleiter/in Spenglerei", "profile": "leadership" },
+    { "pattern": "avor|arbeitsvorbereit|zeichner|planer", "publicTitle": "AVOR/Planung Spenglerei", "profile": "planning" },
+    { "pattern": "servicetech|servicemonte|kundendienst|unterhalt", "publicTitle": "Servicemonteur/in Spenglerei", "profile": "service" },
+    { "pattern": "monteur|facharbeiter", "publicTitle": "Spengler/in", "profile": "envelope" }
+  ],
+  "profiles": {
+    "leadership": {
+      "responsibilities": [
+        "Spengler- und Gebäudehüllenprojekte von der AVOR bis zur Abnahme koordinieren",
+        "Termine, Material, Arbeitssicherheit und Ausführungsqualität steuern",
+        "Baustellenabsprachen mit Kundschaft, Planung und Montageteams führen"
+      ],
+      "requirements": [
+        "Abgeschlossene Ausbildung im Spenglerhandwerk",
+        "Erfahrung in Projektleitung, Baustellenführung oder AVOR",
+        "Selbstständige, zuverlässige und lösungsorientierte Arbeitsweise"
+      ]
+    },
+    "planning": {
+      "responsibilities": [
+        "Ausführungsdetails, Massaufnahmen und Blechabwicklungen vorbereiten",
+        "Material, Befestigungen und Anschlüsse für Werkstatt und Montage disponieren",
+        "Pläne und Auftragsunterlagen vollständig nachführen"
+      ],
+      "requirements": [
+        "Spenglerausbildung mit Erfahrung in AVOR oder Planung",
+        "Gutes Verständnis für Blechabwicklung, Anschlüsse und Gebäudehüllen",
+        "Strukturierte, präzise und teamorientierte Arbeitsweise"
+      ]
+    },
+    "service": {
+      "responsibilities": [
+        "Dachentwässerungen, Einfassungen und Blechanschlüsse kontrollieren",
+        "Schäden lokalisieren und Reparaturen fachgerecht ausführen",
+        "Servicearbeiten dokumentieren und sauber übergeben"
+      ],
+      "requirements": [
+        "Ausbildung oder fundierte Praxis in der Bauspenglerei",
+        "Erfahrung in Unterhalt, Reparatur und sicherem Arbeiten auf Dächern",
+        "Zuverlässiges Auftreten und selbstständige Arbeitsweise"
+      ]
+    },
+    "envelope": {
+      "responsibilities": [
+        "Bleche für Dächer, Fassaden und Anschlüsse zuschneiden und formen",
+        "Rinnen, Fallrohre, Einfassungen und Abdeckungen dicht montieren",
+        "Nähte, Befestigungen und Anschlüsse nach Plan kontrollieren"
+      ],
+      "requirements": [
+        "Abgeschlossene Ausbildung als Spengler/in oder gleichwertige Praxis",
+        "Sicherer Umgang mit Blechbearbeitung, Löten und Falztechniken",
+        "Schwindelfreiheit sowie präzise und sicherheitsbewusste Arbeitsweise"
+      ]
+    }
+  }
+}

@@ -3,53 +3,59 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { Button } from "@/components/ui/button";
-import { SPENGLER_CITIES } from "@/lib/spengler-cities";
 
 export const metadata: Metadata = {
-  title: "Lohn Spengler Schweiz 2026 | Gehalt nach Beruf, Kanton & Erfahrung",
+  title: "Lohn Spengler Schweiz | GAV & Salarium",
   description:
-    "Wie viel verdient ein Spengler in der Schweiz? Lohn nach Beruf, Kanton, Erfahrung und Spezialisierung — Daten 2026.",
+    "Spengler-Lohn mit offiziellen Schweizer Quellen einordnen: BFS Salarium, SECO-GAV und Lehrlingslohn-Empfehlungen.",
   alternates: { canonical: "/lohn-spengler-schweiz" },
+  openGraph: {
+    title: "Lohn Spengler Schweiz | GAV & Salarium",
+    description:
+      "Spengler-Lohn mit offiziellen Schweizer Quellen einordnen: BFS Salarium, SECO-GAV und Lehrlingslohn-Empfehlungen.",
+    url: "/lohn-spengler-schweiz",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lohn Spengler Schweiz | GAV & Salarium",
+    description:
+      "Spengler-Lohn mit offiziellen Schweizer Quellen einordnen: BFS Salarium, SECO-GAV und Lehrlingslohn-Empfehlungen.",
+  },
 };
 
 export const revalidate = 86400;
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.spenglerjob.ch";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://spenglerjob.ch";
+const REVIEW_DATE = "20. August 2026";
 
-const ROLE_SALARIES: { role: string; entry: string; mid: string; senior: string; slug: string }[] = [
-  { role: "Polybauer EFZ Spenglerei", entry: "62'000 – 70'000", mid: "75'000 – 88'000", senior: "85'000 – 98'000", slug: "polybauer-efz-spenglerei" },
-  { role: "Bauspengler", entry: "62'000 – 70'000", mid: "75'000 – 88'000", senior: "85'000 – 98'000", slug: "bauspengler" },
-  { role: "Sanitärspengler", entry: "60'000 – 68'000", mid: "72'000 – 85'000", senior: "82'000 – 95'000", slug: "sanitaerspengler" },
-  { role: "Bedachungs-Spengler", entry: "62'000 – 70'000", mid: "75'000 – 88'000", senior: "85'000 – 98'000", slug: "bedachungs-spengler" },
-  { role: "Spenglerei-Vorarbeiter", entry: "75'000 – 85'000", mid: "88'000 – 100'000", senior: "100'000 – 115'000", slug: "spenglerei-vorarbeiter" },
-  { role: "Projektleiter Spenglerei", entry: "82'000 – 92'000", mid: "95'000 – 115'000", senior: "110'000 – 135'000", slug: "projektleiter-spenglerei" },
+const APPRENTICE_RECOMMENDATIONS = [
+  { year: "1. Lehrjahr", amount: "CHF 850.– pro Monat" },
+  { year: "2. Lehrjahr", amount: "CHF 1'200.– pro Monat" },
+  { year: "3. Lehrjahr", amount: "CHF 1'400.– pro Monat" },
+  { year: "4. Lehrjahr", amount: "CHF 1'600.– pro Monat" },
 ];
 
 const FAQS = [
   {
     question: "Wie viel verdient ein Spengler in der Schweiz?",
     answer:
-      "Ein Spengler in der Schweiz verdient im Durchschnitt zwischen CHF 68'000 – 88'000 pro Jahr — abhängig von Beruf, Erfahrung, Kanton und Arbeitgeber. Berufseinsteiger nach EFZ-Lehrabschluss starten am unteren Ende, mit drei bis fünf Jahren Erfahrung verschiebt sich das Salärband nach oben. Spezialisierungen, Weiterbildungen und der 13. Monatslohn (in der Branche Standard) erhöhen das Jahreseinkommen zusätzlich.",
+      "spenglerjob.ch nennt dafür keine pauschale Zahl. Ein belastbarer Vergleich muss mindestens Berufsfunktion, Region, Erfahrung, Ausbildung, Arbeitszeit, betriebliche Merkmale und allfällige Zulagen berücksichtigen. Salarium des Bundesamts für Statistik erlaubt eine statistische Schätzung für ein konkret gewähltes Profil. Das Ergebnis ist eine Modellschätzung und keine Lohnempfehlung.",
   },
   {
-    question: "Welcher Kanton zahlt Spengler am besten?",
+    question: "Gilt der GAV der Gebäudetechnikbranche für jede Spenglerstelle?",
     answer:
-      "Die höchsten Löhne zahlen Zug, Zürich und Basel-Stadt — typisch 5 bis 12 Prozent über dem Schweizer Mittel. Im Mittelfeld liegen Bern, Aargau und Luzern. Tendenziell tiefer (−3 bis −5 Prozent) sind Fribourg, Solothurn und Graubünden — dafür sind dort die Lebenshaltungskosten und Mietpreise spürbar tiefer. Der Nettolohn-Vergleich lohnt sich also immer mit Steuer- und Lebenskostenrechner.",
+      "Nein, die Anwendbarkeit muss im Einzelfall geprüft werden. Die SECO-Übersicht nennt für den nationalen GAV der Gebäudetechnikbranche einen sachlichen, betrieblichen und territorialen Geltungsbereich sowie Ausnahmen. Entscheidend sind unter anderem Betrieb, Tätigkeit und Arbeitsort. Für eine verbindliche Auskunft ist die zuständige paritätische Kommission die richtige Stelle.",
   },
   {
-    question: "Wie viel verdient ein Lehrling im Beruf Polybauer EFZ Spenglerei?",
+    question: "Wie hoch ist der Lehrlingslohn für Spengler EFZ?",
     answer:
-      "Lehrlinge verdienen je nach Kanton, Branche und Lehrjahr zwischen CHF 700 und CHF 1'600 pro Monat. Genaue Empfehlungen veröffentlicht der Branchenverband Polybau jährlich. In den meisten Lehrverhältnissen ist der 13. Monatslohn Standard. Die Lehre dauert 3 Jahre (Polybauer EFZ Spenglerei); alternativ gibt es Polybaupraktiker EBA (2 Jahre).",
+      "Das am 20. August 2026 geprüfte Berufsprofil von berufsberatung.ch nennt Empfehlungen von CHF 850 im ersten, CHF 1'200 im zweiten, CHF 1'400 im dritten und CHF 1'600 im vierten Lehrjahr. Es handelt sich um Empfehlungen, nicht um eine pauschale Zusicherung für jeden Lehrvertrag.",
   },
   {
-    question: "Welche Spezialisierungen erhöhen den Lohn am stärksten?",
+    question: "Kann ich Kantone mit einem festen Prozentaufschlag vergleichen?",
     answer:
-      "Drei Hebel funktionieren am besten: Erstens eine technische Spezialisierung (5 bis 12 Prozent mehr). Zweitens Weiterbildung — Vorarbeiter, Polier, Projektleiter oder eidg. dipl. Meister heben das Salärband um CHF 10'000 bis CHF 25'000. Drittens ein Wechsel des Arbeitgebers — bei intern blockierten Lohnerhöhungen ist ein Stellenwechsel oft der schnellste Weg, weil Konkurrenzunternehmen aktuell aktiv um Fachkräfte werben.",
-  },
-  {
-    question: "Gilt der GAV für mich als Spengler in der Schweiz?",
-    answer:
-      "Der GAV Polybau (Verband Schweizerischer Polybauer) regelt Mindestlöhne, Arbeitszeit, Ferien, Krankheits- und Unfalltaggeld sowie Spesen für die Branche. Allgemeinverbindlich erklärte GAV gelten für alle Betriebe der Branche unabhängig von Verbandsmitgliedschaft. Prüfe vor Vertragsunterschrift deinen Lohn gegen die aktuellen GAV-Mindestsätze und Erfahrungsstufen — bei Differenzen besteht Anspruch auf Nachzahlung.",
+      "Ein fixer Zuschlag oder Abschlag pro Kanton ist ohne ein definiertes Vergleichsprofil nicht belastbar. Nutze im BFS-Lohnrechner dasselbe Berufs- und Personenprofil und ändere nur die Region. So bleibt sichtbar, welche Annahmen dem Vergleich zugrunde liegen.",
   },
 ];
 
@@ -58,28 +64,34 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Startseite", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Lohn Spengler Schweiz", item: `${SITE_URL}/lohn-spengler-schweiz` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Lohn Spengler Schweiz",
+      item: `${SITE_URL}/lohn-spengler-schweiz`,
+    },
   ],
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: FAQS.map((f) => ({
+  mainEntity: FAQS.map((faq) => ({
     "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
 
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Lohn Spengler Schweiz 2026",
-  description: "Übersicht der Löhne für Spengler in der Schweiz — nach Beruf, Erfahrung und Kanton.",
-  datePublished: "2026-05-08",
-  dateModified: "2026-05-08",
-  author: { "@type": "Organization", name: "spenglerjob.ch" },
+  headline: "Lohn Spengler Schweiz: GAV und Lohnrechner",
+  description:
+    "Methodischer Leitfaden zur Einordnung von Lohnangaben mit offiziellen Schweizer Quellen.",
+  datePublished: "2026-08-19",
+  dateModified: "2026-08-20",
+  author: { "@type": "Organization", name: "Redaktion spenglerjob.ch" },
   publisher: {
     "@type": "Organization",
     name: "spenglerjob.ch",
@@ -94,82 +106,120 @@ export default function LohnPage() {
       <JsonLd data={faqSchema} />
       <JsonLd data={articleSchema} />
 
-      <main className="bg-white">
-        <section className="bg-primary/5 border-b">
+      <main id="main-content" className="bg-background">
+        <section className="trade-hero">
           <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 max-w-4xl">
-            <nav className="text-sm text-slate-500 mb-3" aria-label="Breadcrumb">
+            <nav className="text-sm text-slate-600 mb-3" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-primary">Startseite</Link>
               <span className="mx-2">/</span>
               <span className="text-slate-700">Lohn Spengler Schweiz</span>
             </nav>
             <h1 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight mb-4">
-              Lohn <span className="text-primary">Spengler</span> Schweiz 2026
+              Lohn als <span className="text-primary">Spengler</span> einordnen
             </h1>
             <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
-              Aktuelle Löhne für Spengler in der Schweiz — nach Beruf, Erfahrungsstufe und Kanton. Daten Stand 2026, basierend auf GAV Polybau (Verband Schweizerischer Polybauer), Lohnstrukturerhebung BFS und unseren eigenen Auswertungen von Stelleninseraten.
+              Statt eines erfundenen Schweizer Durchschnitts zeigt diese Seite,
+              wie du ein konkretes Lohnangebot mit offiziellen Quellen prüfst.
             </p>
-          </div>
-        </section>
-
-        <section className="container mx-auto px-4 sm:px-6 py-10 max-w-5xl">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Lohn nach Beruf & Erfahrung</h2>
-          <p className="text-slate-600 mb-6">
-            Bruttojahreslöhne in CHF (12 × Monatslohn, ohne 13. ML und Boni) für die wichtigsten Berufe der Spengler-Branche in der Schweiz.
-          </p>
-          <div className="overflow-x-auto rounded-lg border border-slate-200">
-            <table className="min-w-full divide-y divide-slate-200 text-sm">
-              <thead className="bg-slate-50">
-                <tr className="text-left text-slate-700">
-                  <th className="px-4 py-3 font-semibold">Beruf</th>
-                  <th className="px-4 py-3 font-semibold">Einsteiger</th>
-                  <th className="px-4 py-3 font-semibold">Mit Erfahrung</th>
-                  <th className="px-4 py-3 font-semibold">Senior / Spezialist</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
-                {ROLE_SALARIES.map((r) => (
-                  <tr key={r.slug} className="hover:bg-slate-50">
-                    <td className="px-4 py-3 font-medium text-slate-900">{r.role}</td>
-                    <td className="px-4 py-3 text-slate-600">CHF {r.entry}</td>
-                    <td className="px-4 py-3 text-slate-600">CHF {r.mid}</td>
-                    <td className="px-4 py-3 text-slate-600">CHF {r.senior}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-slate-500 text-xs mt-3">
-            Werte sind Schätzungen auf Basis von Stelleninseraten und GAV Polybau (Verband Schweizerischer Polybauer). Konkrete Saläre hängen von Arbeitgeber, Region und Spezialisierung ab.
-          </p>
-        </section>
-
-        <section className="bg-slate-50 border-y">
-          <div className="container mx-auto px-4 sm:px-6 py-10 max-w-5xl">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Lohn nach Stadt</h2>
-            <p className="text-slate-600 mb-5">
-              Lohn-Bandbreiten für Spengler in den grössten Schweizer Städten:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              { SPENGLER_CITIES.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/spengler-jobs/${c.slug}`}
-                  className="rounded-lg border border-slate-200 bg-white p-4 hover:border-primary/40 transition"
-                >
-                  <div className="font-semibold text-slate-900">{c.name}</div>
-                  <div className="text-sm text-slate-600">{c.salaryBand}</div>
-                  <div className="text-xs text-slate-500 mt-1">{c.region}</div>
-                </Link>
-              ))}
-            </div>
+            <p className="mt-4 text-sm text-slate-600">Quellen geprüft am {REVIEW_DATE}.</p>
           </div>
         </section>
 
         <section className="container mx-auto px-4 sm:px-6 py-10 max-w-4xl">
-          <h2 className="text-2xl font-bold text-slate-900 mb-5">Häufig gestellte Fragen zum Lohn</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Drei belastbare Bezugspunkte</h2>
+          <div className="space-y-4">
+            <article className="trade-panel p-5">
+              <h3 className="font-bold text-slate-900 mb-2">1. BFS Salarium für eine statistische Schätzung</h3>
+              <p className="text-slate-600 leading-relaxed mb-3">
+                Salarium verwendet Daten der Schweizerischen Lohnstrukturerhebung
+                2024 und schätzt den Bruttomonatslohn samt Bandbreite für ein
+                ausgewähltes Profil. Das BFS weist ausdrücklich darauf hin, dass
+                die Resultate Modellschätzungen und keine Lohnempfehlungen sind.
+              </p>
+              <a
+                href="https://www.salarium.bfs.admin.ch/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline"
+              >
+                BFS Salarium öffnen
+              </a>
+            </article>
+
+            <article className="trade-panel p-5">
+              <h3 className="font-bold text-slate-900 mb-2">2. SECO für den anwendbaren GAV</h3>
+              <p className="text-slate-600 leading-relaxed mb-3">
+                Die am Prüfdatum aktuelle SECO-Übersicht führt den nationalen
+                GAV der Gebäudetechnikbranche bis 31. Dezember 2029. Sie nennt
+                Genf, Waadt und Wallis als territoriale Ausnahmen. Das bedeutet
+                nicht, dass jede andere Spenglerstelle automatisch unterstellt
+                ist: Geltungsbereich, Funktion und Betrieb müssen geprüft werden.
+              </p>
+              <a
+                href="https://www.seco.admin.ch/de/gesamtarbeitsvertraege-bund"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline"
+              >
+                SECO-Übersicht der GAV öffnen
+              </a>
+            </article>
+
+            <article className="trade-panel p-5">
+              <h3 className="font-bold text-slate-900 mb-2">3. Das konkrete Inserat und der Arbeitsvertrag</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Vergleiche Grundlohn, Anzahl Monatslöhne, Wochenarbeitszeit,
+                Pensum, Zulagen, Spesen, Pikettregelung und Ferien getrennt.
+                Fehlende Angaben werden auf spenglerjob.ch nicht geschätzt.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="editorial-surface border-y">
+          <div className="container mx-auto px-4 sm:px-6 py-10 max-w-4xl">
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              Offizielle Lehrlingslohn-Empfehlungen
+            </h2>
+            <p className="text-slate-600 mb-5">
+              Das Berufsprofil von berufsberatung.ch nennt die folgenden
+              monatlichen Empfehlungen für Spengler EFZ. Diese
+              Werte sind keine Zusicherung für jeden Lehrvertrag.
+            </p>
+            <div className="trade-panel overflow-x-auto">
+              <table className="min-w-full divide-y divide-slate-200 text-sm">
+                <thead className="bg-slate-100">
+                  <tr className="text-left text-slate-700">
+                    <th className="px-4 py-3 font-semibold">Lehrjahr</th>
+                    <th className="px-4 py-3 font-semibold">Empfehlung</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {APPRENTICE_RECOMMENDATIONS.map((item) => (
+                    <tr key={item.year}>
+                      <td className="px-4 py-3 text-slate-700">{item.year}</td>
+                      <td className="px-4 py-3 font-medium text-slate-900">{item.amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <a
+              href="https://www.berufsberatung.ch/de/berufe/spengler-in-efz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-primary underline"
+            >
+              Quelle: Berufsprofil Spengler EFZ
+            </a>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 sm:px-6 py-10 max-w-4xl">
+          <h2 className="text-2xl font-bold text-slate-900 mb-5">Häufig gestellte Fragen</h2>
           <div className="space-y-3">
-            {FAQS.map((faq, i) => (
-              <details key={i} className="group rounded-lg border border-slate-200 bg-white overflow-hidden">
+            {FAQS.map((faq) => (
+              <details key={faq.question} className="faq-item group overflow-hidden">
                 <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50">
                   {faq.question}
                   <span className="ml-2 shrink-0 text-slate-400 transition-transform group-open:rotate-180" aria-hidden>▾</span>
@@ -182,12 +232,13 @@ export default function LohnPage() {
 
         <section className="bg-primary/5 border-t">
           <div className="container mx-auto px-4 sm:px-6 py-10 max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-slate-900 mb-3">Bereit für den nächsten Schritt?</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">Stellen mit publizierten Angaben vergleichen</h2>
             <p className="text-slate-600 mb-5">
-              Stöbere durch tausende offene Spengler Stellen in der Schweiz — täglich aktualisiert.
+              Durchsuche den aktuell verfügbaren Inseratebestand. Eine Lohnangabe
+              erscheint nur, wenn sie im Inserat vorhanden ist.
             </p>
             <Button asChild>
-              <Link href="/">Jetzt Stellen durchsuchen</Link>
+              <Link href="/">Stellen durchsuchen</Link>
             </Button>
           </div>
         </section>
